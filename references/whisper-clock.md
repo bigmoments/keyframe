@@ -29,7 +29,7 @@ python3 -m venv .venv && .venv/bin/pip install "faster-whisper" "av==12.3.0"
 Jalankan via wrapper (cara yang disarankan — berlaku global di semua chat/worker/cron):
 
 ```bash
-~/workspace/skills/video-pipeline/scripts/whisper.sh <vo.wav> -o timestamps.json
+~/workspace/skills/keyframe/scripts/whisper.sh <vo.wav> -o timestamps.json
 ```
 
 Wrapper otomatis pakai venv skill (faster-whisper + `av==12.3.0` terpin) dan

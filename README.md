@@ -51,7 +51,7 @@ Target: ≤35–40 min for a ~60s video (down from 57 min with the old pipeline)
 ## Installation
 
 Pure Markdown + scripts, standard `SKILL.md` format. No hooks, plugins, or MCP.
-Copy the `video-pipeline/` folder into your harness's skills directory:
+Copy the `keyframe/` folder into your harness's skills directory:
 
 | Harness | Skills directory |
 |---|---|
@@ -61,7 +61,7 @@ Copy the `video-pipeline/` folder into your harness's skills directory:
 | Antigravity / Gemini CLI | per each tool's docs |
 
 ```bash
-cp -r video-pipeline ~/.claude/skills/
+cp -r keyframe ~/.claude/skills/
 ```
 
 Scripts need: **Node 18+** with `puppeteer`, **ffmpeg**, **Python 3.10+** with
@@ -70,7 +70,7 @@ Scripts need: **Node 18+** with `puppeteer`, **ffmpeg**, **Python 3.10+** with
 
 > `render_parallel.mjs` resolves `puppeteer` via ESM (which ignores `NODE_PATH`):
 > symlink your existing install —
-> `ln -s ~/workspace/std-video/v2/node_modules ~/workspace/skills/video-pipeline/node_modules`
+> `ln -s ~/workspace/std-video/v2/node_modules ~/workspace/skills/keyframe/node_modules`
 > — or `npm install puppeteer` inside the skill directory.
 
 ## Usage
@@ -84,7 +84,7 @@ Or follow the phases manually — each `references/` module covers one concern.
 ## Project structure
 
 ```
-video-pipeline/
+keyframe/
 ├── SKILL.md                  # Pipeline definition: phases, principles, anchor rules
 ├── README.md                 # This file
 ├── LICENSE                   # MIT

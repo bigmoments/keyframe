@@ -12,7 +12,7 @@ license: MIT
 version: 1.0.0
 ---
 
-# video-pipeline
+# keyframe
 
 Pipeline produksi video narasi yang **VO-anchored**: voiceover adalah jam utama,
 semua visual dan teks dijangkarkan ke timestamp VO yang terukur — bukan tebakan.

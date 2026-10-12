@@ -1,4 +1,4 @@
-# Contributing to video-pipeline
+# Contributing to keyframe
 
 Thanks for considering a contribution! This skill is a production pipeline —
 correctness and determinism beat cleverness.
