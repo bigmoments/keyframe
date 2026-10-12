@@ -101,6 +101,7 @@ OK). Catat log + laporkan total waktu produksi.
 | `references/beat-sheet.md` | FASE 2 — skema JSON timed beat sheet + aturan anchor |
 | `references/render-efficient.md` | FASE 3 — render paralel + tuning performa |
 | `references/qa-sync.md` | FASE 3–4 — pre-render checklist + QA sinkronisasi |
+| `references/captions.md` | FASE 3 — opsi style caption (`default` kartu subtitle / `capcut` karaoke) |
 
 ## Scripts
 

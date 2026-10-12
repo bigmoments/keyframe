@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.3.0] — 2026-10-12
+### Added
+- `references/captions.md`: opsi style caption — `default` (kartu subtitle, tetap baku) dan `capcut` (karaoke kata-per-kata: highlight + pop kata aktif dari Whisper word timestamps). Konfigurasi via `"caption_style"` di beat_sheet.json.
+- `examples/caption-capcut.html`: drop-in snippet layer caption capcut (deterministik via `window.__setTime`).
+
 ## [1.2.0] — 2026-10-12
 ### Added
 - `references/av-script.md`: menu 4 tipe hook (bold statement / question / problem / benefit) per niche, beat intro opsional untuk tutorial, 4 pola body, 4 varian CTA. Aturan hook lama tetap sebagai default.

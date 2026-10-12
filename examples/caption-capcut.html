@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<!--
+  caption-capcut.html — drop-in snippet style caption "capcut" (karaoke kata-per-kata)
+  Cara pakai: sertakan layer #cc-captions di template, panggil window.__ccRender(t)
+  dari window.__setTime(t). Data: array WORDS {w, s, e} dari Whisper word timestamps.
+  Lihat references/captions.md untuk spesifikasi lengkap.
+-->
+<style>
+  html, body { margin: 0; padding: 0; width: 1080px; height: 1920px; overflow: hidden; }
+  body { background: #0a0f1e; font-family: 'Anton', 'Archivo Black', 'Arial Black', sans-serif; }
+
+  /* Layer caption: sepertiga bawah area aman (pita tengah 1080x1440) */
+  #cc-captions {
+    position: absolute; left: 60px; right: 60px; top: 1080px;
+    text-align: center; pointer-events: none;
+  }
+  .cc-word {
+    display: inline-block;
+    font-size: 72px; font-weight: 900; line-height: 1.3;
+    color: #ffffff; margin: 0 20px;
+    -webkit-text-stroke: 2px #000; paint-order: stroke fill;
+    text-shadow: 0 4px 0 rgba(0,0,0,.55);
+    opacity: 0; transform: scale(.6);
+    transition: opacity .12s, transform .12s, color .12s;
+  }
+  .cc-word.spoken { opacity: 1; transform: scale(1); }
+  .cc-word.active { color: #ffd23f; transform: scale(1.15); }
+</style>
+</head>
+<body>
+
+<div id="cc-captions"></div>
+
+<script>
+// GANTI dengan word timestamps Whisper asli: [{w, s, e}, ...]
+const WORDS = [
+  { w: "Australia",  s: 0.00, e: 0.45 },
+  { w: "pernah",     s: 0.50, e: 0.85 },
+  { w: "menyatakan", s: 0.90, e: 1.45 },
+  { w: "perang",     s: 1.50, e: 1.95 },
+  { w: "melawan",    s: 2.20, e: 2.70 },
+  { w: "BURUNG",     s: 2.75, e: 3.25 },
+  { w: "dan",        s: 3.30, e: 3.55 },
+  { w: "mereka",     s: 3.60, e: 4.00 },
+  { w: "KALAH",      s: 4.05, e: 4.60 },
+];
+
+// Kelompokkan jadi frasa: per kalimat, maks 6 kata / 3 detik
+const PHRASES = [];
+{
+  let cur = [];
+  for (const wd of WORDS) {
+    cur.push(wd);
+    const span = cur[cur.length - 1].e - cur[0].s;
+    if (cur.length >= 6 || span >= 3.0 || /[.!?]$/.test(wd.w)) {
+      PHRASES.push(cur); cur = [];
+    }
+  }
+  if (cur.length) PHRASES.push(cur);
+}
+
+const layer = document.getElementById('cc-captions');
+const HOLD = 0.4; // frasa bertahan 0.4 dtk setelah kata terakhir
+
+function phraseAt(t) {
+  for (const ph of PHRASES) {
+    if (t >= ph[0].s && t < ph[ph.length - 1].e + HOLD) return ph;
+  }
+  return null;
+}
+
+let shownPhrase = null;
+window.__ccRender = function (t) {
+  const ph = phraseAt(t);
+  if (ph !== shownPhrase) {
+    shownPhrase = ph;
+    layer.innerHTML = '';
+    if (ph) for (const wd of ph) {
+      const sp = document.createElement('span');
+      sp.className = 'cc-word'; sp.textContent = wd.w; sp._wd = wd;
+      layer.appendChild(sp);
+    }
+  }
+  if (!ph) return;
+  for (const sp of layer.children) {
+    const wd = sp._wd;
+    sp.classList.toggle('spoken', t >= wd.s);
+    sp.classList.toggle('active', t >= wd.s && t < wd.e);
+  }
+};
+
+// Integrasi dengan pipeline deterministik keyframe:
+window.__setTime = function (t) { window.__ccRender(t); };
+window.__tlReady = true;
+</script>
+</body>
+</html>
