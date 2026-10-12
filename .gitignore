@@ -28,3 +28,4 @@ models/
 __pycache__/
 node_modules
 v3_qa.mjs
+assets/

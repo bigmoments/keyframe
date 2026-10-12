@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.7.0] — 2026-10-12
+### Added
+- `references/map-overlay.md`: peta sebagai visual tambahan/overlay saat beat membahas negara/daerah — sumber SimpleMaps SVG world map (gratis komersial/personal, tiap negara ber-id kode ISO2 untuk highlight via kode), aturan highlight + label + zoom untuk negara kecil, timing mengikuti ucapan nama negara, status sebagai visual kedua (bukan pengganti visual utama).
+
 ## [1.6.0] — 2026-10-12
 ### Added
 - SKILL.md: menu transisi diperkaya (whip-pan, zoom punch, impact shake, glitch/RGB split, film burn, light leak, mask wipe) + panduan pilih sesuai energi beat + teknik pre-lap (transisi mulai 0,15–0,3 dtk sebelum batas kalimat) + batas 2–3 jenis transisi per video.
