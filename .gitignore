@@ -1,0 +1,30 @@
+# Dependencies / editor noise
+node_modules/
+.venv/
+.DS_Store
+Thumbs.db
+*.log
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Env / secrets (never commit)
+.env
+.env.*
+!.env.example
+
+# Local test outputs
+/tmp/
+*.mp4
+!examples/
+
+# Model files (besar, diunduh terpisah)
+models/
+*.bin
+__pycache__/
+node_modules
+v3_qa.mjs
