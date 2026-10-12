@@ -63,9 +63,52 @@ Ini limiter utama speedup (lihat "Keterbatasan" di bawah).
 ## Cara pakai
 
 ```bash
-# CLI identik dengan render_full.mjs
+# Full render (CLI sama seperti sebelumnya)
 node scripts/render_parallel.mjs <html> <durasi-detik> <out.mp4>
+
+# Preview rentang waktu — untuk QA spot-check tanpa render full.
+# Contoh: cek 15 detik pertama saja (jauh lebih ringan).
+node scripts/render_parallel.mjs <html> <durasi-detik> <out-preview.mp4> 0 15
 ```
+
+Jalankan dengan prioritas rendah agar tidak melahap cron lain di VM yang sama:
+
+```bash
+nice -n 10 node scripts/render_parallel.mjs <html> <durasi-detik> <out.mp4>
+```
+
+## Optimasi beban resource (CPU/RAM)
+
+Render paralel 2 page + 2 encode di VM 2 CPU adalah konfigurasi paling berat
+di pipeline ini. Aturan mainnya:
+
+1. **Preview rentang dulu, full belakangan (penghemat terbesar).**
+   Kebanyakan re-render adalah iterasi QA ("cek 15 detik pertama", "cek momen
+   jangkar di 0:42"). Render full 60 detik untuk tiap iterasi = buang resource.
+   Pakai argumen `[fromSec] [toSec]` untuk preview rentang — full render cukup
+   SEKALI di akhir setelah QA lolos.
+
+2. **`nice` proses render.** Render bukan kerjaan interaktif — `nice -n 10`
+   memastikan cron produksi/upload tidak kelaparan CPU saat render jalan.
+
+3. **ffmpeg `-threads 1` per segmen (sudah di script).** Default x264 membuka
+   ~3 thread per proses → 2 encode paralel = 6 thread berebut 2 CPU (thrashing).
+   Dibatasi 1 thread per encode; naikkan hanya di mesin >4 CPU
+   (`threads ≈ CPU / jumlah_page`).
+
+4. **`--disable-dev-shm-usage` (sudah di script).** /dev/shm di container
+   umumnya kecil — tanpa flag ini tab Chromium bisa crash misterius di tengah
+   render. Dengan flag ini Chromium memakai /tmp sebagai gantinya.
+
+5. **Cap V8 heap 512MB (sudah di script).** Mencegah satu page rakus memori
+   saat HTML memuat banyak aset.
+
+6. **try/finally: browser & tmp selalu dibersihkan (sudah di script).**
+   Render yang gagal di tengah tidak boleh meninggalkan Chromium/ffmpeg
+   yatim yang terus memakan RAM/CPU.
+
+7. **Serial bila RAM < 4GB bebas** (aturan lama, tetap berlaku) — 2 Chromium
+   + 2 ffmpeg butuh memori lebih besar daripada 1.
 
 ## Kapan TIDAK pakai paralel
 
@@ -73,7 +116,8 @@ node scripts/render_parallel.mjs <html> <durasi-detik> <out.mp4>
   di `__setTime`) — page B yang mulai dari tengah akan salah. Pastikan
   `__setTime(t)` benar-benar stateless: panggil dua kali dengan `t` sama harus
   hasilkan frame identik.
-- RAM < 4GB bebas — 2 Chromium + 2 ffmpeg butuh memori lebih.
+- RAM < 4GB bebas — 2 Chromium + 2 ffmpeg butuh memori lebih (lihat juga
+  poin 7 di "Optimasi beban resource").
 - Workload yang didominasi video-seek per frame: speedup menyusut (terukur
   1,02x pada HTML uji yang seek tiap frame) karena seek tidak terparalelisasi
   dengan baik dan berebut media pipeline. Pada HTML produksi campuran

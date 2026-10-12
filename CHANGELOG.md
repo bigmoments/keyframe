@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.8.0] — 2026-10-12
+### Added
+- `scripts/render_parallel.mjs`: optimasi resource — argumen opsional `[fromSec] [toSec]` untuk preview rentang (QA spot-check tanpa full render), ffmpeg `-threads 1` per segmen (cagah oversubscribe di 2 CPU), `--disable-dev-shm-usage`, cap V8 heap 512MB, try/finally (browser + tmp + ffmpeg yatim selalu dibersihkan saat gagal).
+- `references/render-efficient.md`: seksi "Optimasi beban resource" — preview rentang dulu, `nice -n 10` agar tidak melahap cron lain, penjelasan thread cap & flag Chromium.
+
 ## [1.7.0] — 2026-10-12
 ### Added
 - `references/map-overlay.md`: peta sebagai visual tambahan/overlay saat beat membahas negara/daerah — sumber SimpleMaps SVG world map (gratis komersial/personal, tiap negara ber-id kode ISO2 untuk highlight via kode), aturan highlight + label + zoom untuk negara kecil, timing mengikuti ucapan nama negara, status sebagai visual kedua (bukan pengganti visual utama).
