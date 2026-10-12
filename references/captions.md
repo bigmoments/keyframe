@@ -9,6 +9,7 @@
 |-------|------|-----------|-------------|
 | `default` | Kartu subtitle | Kartu 1–2 baris berganti per irama ucapan (aturan 2 baris/42 char di `whisper-clock.md` + `qa-sync.md`) | fakta, dokumenter, STD — footage sinematik tidak tertutup teks besar |
 | `capcut` | Karaoke kata-per-kata | Kata muncul satu per satu mengikuti ucapan; kata aktif di-highlight + pop | talking-head, tips, tutorial — konten personal yang energik |
+| `pop` | Satu kata per layar | Hanya kata yang sedang diucapkan tampil besar di tengah, berganti tiap kata; kata KAPITAL SEMUA otomatis highlight | motivasi, tips cepat, hook — energi maksimal, konteks minimal |
 
 `default` adalah style baku. `capcut` hanya dipakai bila diminta eksplisit
 atau untuk channel/niche yang gayanya personal.
@@ -46,6 +47,22 @@ punya `{word, start, end}`.
 - **Deterministik:** semua state dihitung dari `window.__setTime(t)` —
   tidak ada animasi berbasis waktu nyata. Lihat `examples/caption-capcut.html`
   sebagai drop-in snippet.
+
+## Spesifikasi style `pop`
+
+Sumber data: **word timestamps Whisper**.
+
+- **Satu kata tampil** — hanya kata yang sedang diucapkan (`start <= t < end`).
+  Jeda antar kata >0.25 detik: layar kosong (bersih, tidak ada kata basi).
+- **Emphasis otomatis:** kata yang ditulis KAPITAL SEMUA di naskah (mis. `BURUNG`,
+  `KALAH`) tampil warna highlight kuning `#ffd23f`. Kata biasa: putih.
+- **Tipografi:** sangat besar (128px pada 1080x1920), bold berat, stroke hitam 3px.
+- **Posisi:** tengah area aman (y ≈ 720 pada canvas 1080x1920).
+- **Efek pop:** tiap ganti kata, kata baru muncul dengan scale 0.5 → 1
+  (spring). Deterministik via `window.__setTime(t)`.
+- **Kapan dipakai:** konten yang mengandalkan energi kata (motivasi, tips cepat,
+  hook). JANGAN untuk narasi padat fakta — penonton butuh konteks kalimat utuh.
+  Lihat `examples/caption-pop.html` sebagai drop-in snippet.
 
 ## Aturan yang tetap berlaku
 

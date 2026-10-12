@@ -28,6 +28,20 @@ Deterministik: render dua kali hasilnya identik.
 JANGAN dipakai untuk: video tanpa VO (pakai motion-studio langsung), live action
 shooting, editing footage mentah non-narasi.
 
+## Batas dengan skill motion-studio (2026-10-12)
+
+- **keyframe = metodologi produksi (orkestrator).** Mengatur alur 5 fase dan
+  aturan timing VO-anchored. BUKAN engine render animasi.
+- **motion-studio = eksekusi animasi.** Dipanggil keyframe di FASE 3 untuk
+  sisipan animasi, dengan durasi PRESISI dari beat sheet — JANGAN langsung ke
+  huashu-art-motion / bang-motion.
+- **Pembagian kerja:** "bikin video animasi/motion graphic" → motion-studio
+  langsung. "Produksi video narasi ber-VO dengan timing presisi" → keyframe
+  mengatur alur, motion-studio mengeksekusi sisipan animasinya. Jangan
+  menjalankan pipeline penuh dua-duanya secara terpisah dalam satu tugas.
+- **Perintah master:** konten video "Semua tentang dunia" WAJIB lewat
+  motion-studio.
+
 ## Prinsip inti
 
 1. **VO adalah jam utama.** Tidak ada visual event yang memakai durasi tebakan —

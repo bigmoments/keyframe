@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<!--
+  caption-pop.html — drop-in snippet style caption "pop" (satu kata per layar)
+  Cara pakai: sertakan layer #pop-captions di template, panggil window.__popRender(t)
+  dari window.__setTime(t). Data: array WORDS {w, s, e} dari Whisper word timestamps.
+  Kata yang ditulis KAPITAL SEMUA di naskah (mis. "BURUNG") otomatis di-highlight.
+  Lihat references/captions.md untuk spesifikasi lengkap.
+-->
+<style>
+  html, body { margin: 0; padding: 0; width: 1080px; height: 1920px; overflow: hidden; }
+  body { background: #0a0f1e; font-family: 'Anton', 'Archivo Black', 'Arial Black', sans-serif; }
+
+  /* Layer caption: tengah area aman */
+  #pop-captions {
+    position: absolute; left: 60px; right: 60px; top: 720px;
+    text-align: center; pointer-events: none;
+  }
+  .pop-word {
+    display: inline-block;
+    font-size: 128px; font-weight: 900; line-height: 1.2;
+    color: #ffffff;
+    -webkit-text-stroke: 3px #000; paint-order: stroke fill;
+    text-shadow: 0 6px 0 rgba(0,0,0,.55);
+    opacity: 0; transform: scale(.5);
+    transition: opacity .1s, transform .16s cubic-bezier(.2,1.6,.4,1);
+  }
+  .pop-word.show { opacity: 1; transform: scale(1); }
+  .pop-word.emph { color: #ffd23f; }
+</style>
+</head>
+<body>
+
+<div id="pop-captions"></div>
+
+<script>
+// GANTI dengan word timestamps Whisper asli: [{w, s, e}, ...]
+const WORDS = [
+  { w: "Australia",  s: 0.00, e: 0.45 },
+  { w: "pernah",     s: 0.50, e: 0.85 },
+  { w: "menyatakan", s: 0.90, e: 1.45 },
+  { w: "perang",     s: 1.50, e: 1.95 },
+  { w: "melawan",    s: 2.20, e: 2.70 },
+  { w: "BURUNG",     s: 2.75, e: 3.25 },
+  { w: "dan",        s: 3.30, e: 3.55 },
+  { w: "mereka",     s: 3.60, e: 4.00 },
+  { w: "KALAH",      s: 4.05, e: 4.60 },
+];
+
+const layer = document.getElementById('pop-captions');
+const HOLD = 0.25; // kata terakhir bertahan 0.25 dtk setelah selesai diucapkan
+const isEmph = (w) => w.length > 1 && w === w.toUpperCase() && /[A-ZÀ-Ž]/.test(w);
+
+let cur = null;
+window.__popRender = function (t) {
+  let show = null;
+  for (const wd of WORDS) {
+    if (t >= wd.s && t < wd.e) { show = wd; break; }
+  }
+  if (!show) {
+    for (const wd of WORDS) {
+      if (t >= wd.e && t < wd.e + HOLD) { show = wd; break; }
+    }
+  }
+  if (show !== cur) {
+    cur = show;
+    layer.innerHTML = '';
+    if (show) {
+      const sp = document.createElement('span');
+      sp.className = 'pop-word show' + (isEmph(show.w) ? ' emph' : '');
+      sp.textContent = show.w;
+      layer.appendChild(sp);
+    }
+  }
+};
+
+// Integrasi dengan pipeline deterministik keyframe:
+window.__setTime = function (t) { window.__popRender(t); };
+window.__tlReady = true;
+</script>
+</body>
+</html>

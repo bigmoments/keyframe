@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.4.0] — 2026-10-12
+### Added
+- Style caption ketiga: `pop` — satu kata per layar, efek pop tiap ganti kata, kata KAPITAL SEMUA otomatis highlight kuning. Snippet: `examples/caption-pop.html`. Cocok untuk motivasi/tips cepat; jangan untuk narasi padat fakta.
+
 ## [1.3.0] — 2026-10-12
 ### Added
 - `references/captions.md`: opsi style caption — `default` (kartu subtitle, tetap baku) dan `capcut` (karaoke kata-per-kata: highlight + pop kata aktif dari Whisper word timestamps). Konfigurasi via `"caption_style"` di beat_sheet.json.
