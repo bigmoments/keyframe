@@ -15,6 +15,8 @@ Jalankan SEMUA — tidak boleh ada yang "nanti dicek pas QA":
 - [ ] **Safe area:** SEMUA teks penting di pita tengah 1080×1440 (240px atas
       dan 240px bawah kanvas bebas teks penting).
 - [ ] **Foto arsip sudah di-crop** dari bingkai putih SEBELUM Ken Burns.
+- [ ] **Subjek per beat:** tiap beat lolos uji bisu — visual menggambarkan
+      subjek kalimatnya, bukan visual daur ulang dari beat lain.
 - [ ] **Setiap visual event punya anchor timestamp** dari VO (lihat
       `beat-sheet.md`). Tidak ada durasi tebakan.
 - [ ] **Font & watermark:** font ter-load (`document.fonts`), watermark header
@@ -30,7 +32,8 @@ Cek per still:
 - [ ] Teks tidak kepotong / tidak overflow.
 - [ ] Tidak ada dua teks bertumpuk.
 - [ ] Komposisi benar, watermark sesuai gaya.
-- [ ] Entitas spesifik = wujud aslinya (bukan footage generik yang salah subjek).
+- [ ] Entitas spesifik = wujud aslinya (bukan footage generik yang salah subjek);
+      tiap still lolos uji bisu untuk beat-nya.
 
 ## QA sinkronisasi (wajib — ini yang sering miss)
 

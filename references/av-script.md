@@ -52,6 +52,33 @@ Aturan:
   | Engagement | "Setuju atau nggak? Tulis di komen." |
   | Link/afiliasi | "Link-nya di bio." |
 
+## Subjek per kalimat (aturan pencocokan visual)
+
+Setiap beat membahas SATU pokok — dan visual beat itu WAJIB menggambarkan
+pokok tersebut, bukan sekadar "nyambung".
+
+Cara kerja saat menulis kolom VISUAL:
+1. Garisbawahi SUBJEK kalimatnya: siapa/apa yang dibahas kalimat ini?
+   (orang, tempat, benda, angka, peristiwa)
+2. Tulis visual yang menggambarkan subjek ITU — bukan visual beat sebelumnya,
+   bukan footage generik "biar ada gambar".
+3. Uji bisu: matikan suara, tonton visual beat ini saja — penonton harus bisa
+   menebak topiknya dengan benar. Kalau tidak, visualnya salah.
+
+Tangga prioritas per beat:
+- Kalimat menyebut entitas spesifik (nama orang/tempat/benda/angka) →
+  tampilkan WUJUD entitas itu (lihat hierarki visual di SKILL.md).
+- Kalimat pernyataan umum → visual boleh generik TAPI tetap se-topik.
+  "Petani panik" → petani yang panik / kerumunan resah, bukan sawah kosong.
+
+Anti-pattern:
+- Kalimat tentang "senapan mesin Lewis" → visual tentara acak tanpa senapan
+  terlihat. (Subjeknya senapannya, bukan tentaranya.)
+- Kalimat "20.000 emu menyerbu" → close-up SATU emu tanpa kesan jumlah.
+  (Subjeknya kerumunan/jumlahnya.)
+- Visual beat sebelumnya dipakai lagi padahal subjek kalimat sudah ganti.
+  (Penonton mengira masih membahas hal yang sama.)
+
 ## Contoh konkret
 
 ```
@@ -84,6 +111,7 @@ TEKS  : 10.000 peluru vs 986 emu
 - [ ] Fakta (angka/tahun/nama) sudah verifikasi via search.
 - [ ] Hook 3 detik: tipe hook dipilih sesuai niche, lolos uji "hah, masa sih?" / "aku butuh ini".
 - [ ] Pola body + varian CTA dipilih (terutama untuk channel/niche baru).
+- [ ] Subjek per beat: tiap visual menggambarkan subjek kalimatnya (lolos uji bisu).
 - [ ] Estimasi durasi wajar (±750–800 karakter ≈ 60 detik untuk VO natural).
 - [ ] Dibaca ulang keras-keras sekali — tidak ada kalimat yang bikin tersedak.
 

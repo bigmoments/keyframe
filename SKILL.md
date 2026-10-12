@@ -55,6 +55,44 @@ shooting, editing footage mentah non-narasi.
 5. **Verifikasi tiap artefak.** Tiap tahap selesai = bukti eksplisit (file ada,
    ukuran wajar, timestamp masuk akal). Tanpa bukti = belum selesai.
 
+## Standar editor profesional (2026-10-12, arahan master)
+
+Aturan rasa editor profesional — berlaku untuk SEMUA produksi via skill ini:
+
+**Hierarki visual:**
+1. FOOTAGE ASLI subjeknya — prioritas tertinggi, cari sungguh-sungguh (jangan
+   puas dengan footage generik bila footage aslinya ada).
+2. FOTO DOKUMENTASI ASLI subjeknya — foto orang yang disebut namanya, foto
+   tempat asli, foto spesimen. DIIZINKAN liberal (bukan dekorasi).
+3. Footage generik yang relevan — hanya untuk pernyataan umum.
+4. Still dekoratif/generik — MAKSIMAL 2 per video.
+- Setiap NAMA ORANG yang disebut narasi WAJIB divisualkan fotonya bila ada;
+  setiap TEMPAT spesifik diusahakan foto aslinya.
+- DILARANG footage yang salah subjek — lebih baik footage generik yang benar
+  daripada footage spesifik yang salah.
+
+**Pacing & transisi:**
+- 1,5–2,5 dtk/shot di bagian isi; hook ≤2 dtk/shot; shot punchline/penutup =
+  TERLAMA.
+- Tiap beat >5 dtk pecah jadi ≥2 visual berbeda (wide → tight → interesting).
+- Transisi kreatif: flash putih, whip-zoom (Ken Burns cepat), match-cut.
+  DILARANG dip-to-black. Cut HANYA di batas kalimat/topik VO.
+
+**Kontinuitas timeline:**
+- Segmen visual harus CONTIGUOUS — tidak boleh ada jeda kosong antar segmen
+  (jeda = layar hitam).
+- Verifikasi: scan brightness per detik; tidak ada frame dengan rata-rata
+  brightness <5.
+
+**Treatment warna:**
+- Samakan koreksi dasar (kontras/saturasi) SEMUA klip SEBELUM grading gaya.
+  Lompatan B&W arsip → warna modern tanpa treatment = tempelan.
+
+**QA editor (tambahan untuk FASE 4):**
+- Tonton 15 detik pertama: target ≥5 visual berbeda.
+- Cek subjek: tiap entitas spesifik yang disebut narasi tampil wujud yang benar.
+- Cek jeda: tidak ada frame hitam/gap di seluruh durasi.
+
 ## Alur 5 fase
 
 ```
@@ -88,7 +126,7 @@ Petakan tiap beat AV ke timestamp aktual → `beat_sheet.json`
 **FASE 3 — Build.** Pre-render checklist (`references/qa-sync.md`): subtitle
 ≤2 baris / ≤42 char per baris, tidak ada teks tumpuk atau keluar safe area
 (1080×1440 tengah kanvas 1080×1920), SETIAP visual event punya anchor timestamp
-dari VO. Panggil motion-studio/huashu untuk sisipan animasi dengan durasi PRESISI
+dari VO. Panggil motion-studio untuk sisipan animasi dengan durasi PRESISI
 dari beat sheet (bukan tebakan "5–10 detik"). Aturan jangkar:
   - Animasi angka: mulai 0,3–0,5 dtk SEBELUM VO menyebut angka, landing TEPAT
     saat VO selesai menyebutnya (durasi dihitung dari timestamp).

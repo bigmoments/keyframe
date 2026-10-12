@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.5.0] — 2026-10-12
+### Added
+- `references/av-script.md`: aturan "Subjek per kalimat" — tiap beat wajib menggambarkan pokok kalimatnya (uji bisu), tangga prioritas entitas spesifik vs pernyataan umum, 3 anti-pattern konkret. Masuk checklist kunci naskah.
+- `references/qa-sync.md`: cek subjek per beat di pre-render checklist + uji bisu per still di QA stills.
+
 ## [1.4.0] — 2026-10-12
 ### Added
 - Style caption ketiga: `pop` — satu kata per layar, efek pop tiap ganti kata, kata KAPITAL SEMUA otomatis highlight kuning. Snippet: `examples/caption-pop.html`. Cocok untuk motivasi/tips cepat; jangan untuk narasi padat fakta.
