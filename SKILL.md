@@ -75,8 +75,34 @@ Aturan rasa editor profesional — berlaku untuk SEMUA produksi via skill ini:
 - 1,5–2,5 dtk/shot di bagian isi; hook ≤2 dtk/shot; shot punchline/penutup =
   TERLAMA.
 - Tiap beat >5 dtk pecah jadi ≥2 visual berbeda (wide → tight → interesting).
-- Transisi kreatif: flash putih, whip-zoom (Ken Burns cepat), match-cut.
-  DILARANG dip-to-black. Cut HANYA di batas kalimat/topik VO.
+- Menu transisi — pilih sesuai energi beat, bukan selera acak:
+
+  | Energi beat | Transisi | Contoh pakai |
+  |---|---|---|
+  | Hook / fakta mengejutkan | flash putih, whip-pan, whip-zoom | kalimat hook, angka mustahil |
+  | Body / penjelasan | cut langsung, mask wipe halus | narasi mengalir |
+  | Impak / punchline | zoom punch, impact shake, match-cut | angka kunci, kalimat penutup |
+  | Tech / AI | glitch, RGB split | konten teknologi |
+  | Arsip / nostalgia | film burn, light leak hangat | footage lama, foto arsip |
+
+- DILARANG dip-to-black.
+- Cut HANYA di batas kalimat/topik VO — dengan nuansa **pre-lap**: transisi
+  DIMULAI 0,15–0,3 dtk SEBELUM batas kalimat, sehingga shot baru sudah stabil
+  TEPAT saat kalimat baru dimulai. Cut yang mulai persis di batas terasa telat.
+- Satu video maksimal 2–3 jenis transisi. Ganti-ganti tiap beat terlihat murahan.
+
+**Sumber landscape → portrait (dilarang crop habis-habisan):**
+- Teknik baku: **blur-bg** — layer tajam di-fit lebar penuh TANPA di-crop;
+  di belakangnya, salinan frame yang sama di-blur kuat + digelapkan sebagai
+  pengisi bingkai portrait. Tidak ada satu piksel subjek pun yang hilang.
+- Varian: Ken Burns pelan (zoom/pan) pada layer tajam sementara bg blur diam —
+  memberi gerak tanpa mengorbankan komposisi.
+- Cover-crop HANYA bila: subjek memang memenuhi frame, ATAU posisi subjek
+  diketahui dan `object-position` menjaganya tetap dalam frame.
+  (Contoh: wajah di sepertiga kanan → `object-position: 75% 50%`, bukan
+  center-crop buta.)
+- DILARANG: center-crop buta (memenggal subjek), stretch (distorsi tubuh/
+  wajah), bar hitam (video terlihat mengecil di tengah layar).
 
 **Kontinuitas timeline:**
 - Segmen visual harus CONTIGUOUS — tidak boleh ada jeda kosong antar segmen
@@ -92,6 +118,8 @@ Aturan rasa editor profesional — berlaku untuk SEMUA produksi via skill ini:
 - Tonton 15 detik pertama: target ≥5 visual berbeda.
 - Cek subjek: tiap entitas spesifik yang disebut narasi tampil wujud yang benar.
 - Cek jeda: tidak ada frame hitam/gap di seluruh durasi.
+- Cek crop: tidak ada subjek terpenggal di tepi frame; sumber landscape
+  memakai blur-bg, bukan crop buta.
 
 ## Alur 5 fase
 

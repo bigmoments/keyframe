@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.6.0] — 2026-10-12
+### Added
+- SKILL.md: menu transisi diperkaya (whip-pan, zoom punch, impact shake, glitch/RGB split, film burn, light leak, mask wipe) + panduan pilih sesuai energi beat + teknik pre-lap (transisi mulai 0,15–0,3 dtk sebelum batas kalimat) + batas 2–3 jenis transisi per video.
+- SKILL.md: aturan "sumber landscape → portrait" — teknik baku blur-bg (layer tajam fit + salinan blur gelap sebagai pengisi), cover-crop hanya bila subjek terjaga via object-position; larang center-crop buta, stretch, bar hitam. Cek crop masuk QA editor.
+
 ## [1.5.0] — 2026-10-12
 ### Added
 - `references/av-script.md`: aturan "Subjek per kalimat" — tiap beat wajib menggambarkan pokok kalimatnya (uji bisu), tangga prioritas entitas spesifik vs pernyataan umum, 3 anti-pattern konkret. Masuk checklist kunci naskah.
