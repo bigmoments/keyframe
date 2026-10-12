@@ -20,15 +20,42 @@ Aturan:
   "Visual menarik" bukan instruksi — tulis objeknya.
 - Tandai **momen jangkar** dengan `[JANGKAR: angka]` — angka/momen yang wajib
   sinkron presisi dengan VO (lihat `beat-sheet.md`).
-- Hook 3 detik: BEAT 1 harus kalimat yang bikin penonton tidak bisa scroll
-  (takut / ngeri / tidak percaya / penasaran setengah mati), muncul di suara
-  DAN teks visual besar. Clickbait di bingkai boleh, fakta di dalamnya 100% benar.
-- Penutup: ajakan follow/subscribe di suara DAN teks (bila untuk sosmed).
+- Hook 3 detik: BEAT 1 harus kalimat yang bikin penonton tidak bisa scroll,
+  muncul di suara DAN teks visual besar. Clickbait di bingkai boleh, fakta di
+  dalamnya 100% benar. Pilih SATU tipe hook sesuai niche:
+
+  | Tipe | Contoh | Cocok untuk |
+  |------|--------|-------------|
+  | Bold statement | "Australia pernah perang melawan BURUNG. Dan KALAH." | fakta, sejarah, mitos |
+  | Question | "Kenapa HP baru 6 bulan udah lemot?" | tips, tutorial, problem-solving |
+  | Problem | "90% orang salah pakai cara ini..." | edukasi, how-to |
+  | Benefit | "3 menit, hemat 2 juta setahun." | finance, produktivitas, life-hack |
+
+  Uji: lolos "hah, masa sih?" (niche fakta) atau "wah, aku butuh ini" (niche tips).
+- Beat intro (OPSIONAL, hanya niche tutorial/explainer): 1 beat setelah hook —
+  akui masalah → janji solusi → preview isi. JANGAN dipakai untuk format fakta
+  cepat: merusak pacing.
+- Pola body: pilih satu per video (wajib dipikirkan untuk channel/niche baru):
+
+  | Pola | Struktur beat | Cocok untuk |
+  |------|---------------|-------------|
+  | Punchline (default) | konteks → angka/fakta → punchline | fakta, sejarah |
+  | Step-by-step | langkah 1 → 2 → 3, satu beat per langkah | tutorial, how-to |
+  | Problem-solution | masalah → kenapa terjadi → solusi | edukasi, tips |
+  | List | "cara 1, 2, 3", satu beat per item | life-hack, rekomendasi |
+- Penutup: pilih SATU varian CTA, di suara DAN teks (bila untuk sosmed):
+
+  | Varian | Contoh |
+  |--------|--------|
+  | Follow/subscribe | "Follow biar nggak ketinggalan fakta berikutnya." |
+  | Next video (session time) | "Besok aku bahas X — jangan sampai lolos." |
+  | Engagement | "Setuju atau nggak? Tulis di komen." |
+  | Link/afiliasi | "Link-nya di bio." |
 
 ## Contoh konkret
 
 ```
-BEAT 1 | hook
+BEAT 1 | hook (bold statement)
 AUDIO : Australia pernah menyatakan perang... melawan BURUNG. Dan mereka KALAH.
 VISUAL: teks hook besar "KALAH MELAWAN BURUNG?" + footage emu berlari (close-up)
 TEKS  : KALAH MELAWAN BURUNG?
@@ -55,7 +82,8 @@ TEKS  : 10.000 peluru vs 986 emu
 - [ ] Kolom VISUAL konkret (objek, bukan sifat).
 - [ ] Momen jangkar ditandai `[JANGKAR: ...]`.
 - [ ] Fakta (angka/tahun/nama) sudah verifikasi via search.
-- [ ] Hook 3 detik lolos uji "hah, masa sih?".
+- [ ] Hook 3 detik: tipe hook dipilih sesuai niche, lolos uji "hah, masa sih?" / "aku butuh ini".
+- [ ] Pola body + varian CTA dipilih (terutama untuk channel/niche baru).
 - [ ] Estimasi durasi wajar (±750–800 karakter ≈ 60 detik untuk VO natural).
 - [ ] Dibaca ulang keras-keras sekali — tidak ada kalimat yang bikin tersedak.
 

@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.2.0] — 2026-10-12
+### Added
+- `references/av-script.md`: menu 4 tipe hook (bold statement / question / problem / benefit) per niche, beat intro opsional untuk tutorial, 4 pola body, 4 varian CTA. Aturan hook lama tetap sebagai default.
+
 ## [1.1.0] — 2026-10-12
 ### Changed
 - Renamed skill `video-pipeline` → **`keyframe`** (public release prep; no functional changes).
